@@ -1,0 +1,1 @@
+(()=>{"use strict";(()=>{let o;fetch("db.json").then((o=>o.json())).then((t=>{o=t,console.log(o)})).catch((o=>{console.log(o)})),setTimeout((()=>{fetch("https://jsonplaceholder.typicode.com/posts",{method:"post",body:JSON.stringify(o)}).then((o=>o.json())).then((t=>{console.log(o)})).catch((o=>{console.log(o)}))}),1e3)})()})();
