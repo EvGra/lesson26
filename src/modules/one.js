@@ -16,19 +16,21 @@ const oneModule = () => {
 
   getData()
 
-  const sendData = () => {
+  async function sendData() {
     setTimeout(() => {
-      fetch('https://jsonplaceholder.typicode.com/posts', { 
-      method: 'post',
-      body: JSON.stringify(obj), 
-    })
-    .then(response => response.json())
-      .then(data => {
-        console.log(obj);
-      })
-      .catch(error => {
-        console.log(error);
-      })
+     try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', { 
+          method: 'post',
+          body: JSON.stringify(obj), 
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        })
+        const data = await response.json()
+        console.log(obj)
+     } catch(e) {
+       console.error(e)
+     }
     }, 1000);
   }
 
