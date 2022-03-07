@@ -18,19 +18,13 @@ const oneModule = () => {
 
   async function sendData() {
     setTimeout(() => {
-     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts', { 
-          method: 'post',
-          body: JSON.stringify(obj), 
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        })
-        const data = await response.json()
-        console.log(obj)
-     } catch(e) {
-       console.error(e)
-     }
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://jsonplaceholder.typicode.com/posts");
+      xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+      xhr.send(JSON.stringify(obj));
+
+      xhr.onload = () => console.log(xhr.response);
     }, 1000);
   }
 
